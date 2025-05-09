@@ -11,15 +11,15 @@ small_font = pygame.font.Font('assets/Terserah.ttf', 16)
 real_small_font = pygame.font.Font('assets/Terserah.ttf', 10)
 fps = 60
 timer = pygame.time.Clock()
-WIDTH = 52 * 35
+WIDTH = 52 * 25
 HEIGHT = 400
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 white_sounds = []
 black_sounds = []
 active_whites = []
 active_blacks = []
-left_oct = 4
-right_oct = 5
+left_oct = 2
+right_oct = 3
 
 left_hand = pl.left_hand
 right_hand = pl.right_hand
@@ -29,10 +29,10 @@ black_notes = pl.black_notes
 black_labels = pl.black_labels
 
 for i in range(len(white_notes)):
-    white_sounds.append(mixer.Sound(f'assets\\notes\\{white_notes[i]}.wav'))
+    white_sounds.append(mixer.Sound(f'assets\\notesall\\sine\\{white_notes[i]}.wav'))
 
 for i in range(len(black_notes)):
-    black_sounds.append(mixer.Sound(f'assets\\notes\\{black_notes[i]}.wav'))
+    black_sounds.append(mixer.Sound(f'assets\\notesall\\sine\\{black_notes[i]}.wav'))
 
 pygame.display.set_caption("Pete's Python Piano")
 
@@ -137,10 +137,10 @@ def draw_hands(rightOct, leftOct, rightHand, leftHand):
 
 
 def draw_title_bar():
-    instruction_text = medium_font.render('Up/Down Arrows Change Left Hand', True, 'black')
-    screen.blit(instruction_text, (WIDTH - 500, 10))
-    instruction_text2 = medium_font.render('Left/Right Arrows Change Right Hand', True, 'black')
-    screen.blit(instruction_text2, (WIDTH - 500, 50))
+    # instruction_text = medium_font.render('Up/Down Arrows Change Left Hand', True, 'black')
+    # screen.blit(instruction_text, (WIDTH - 500, 10))
+    # instruction_text2 = medium_font.render('Left/Right Arrows Change Right Hand', True, 'black')
+    # screen.blit(instruction_text2, (WIDTH - 500, 50))
     img = pygame.transform.scale(pygame.image.load('assets/logo.png'), [150, 150])
     screen.blit(img, (-20, -30))
     title_text = font.render('Python Programmable Piano!', True, 'white')
@@ -179,7 +179,7 @@ while run:
     timer.tick(fps)
     screen.fill('gray')
     white_keys, black_keys, active_whites, active_blacks = draw_piano(active_whites, active_blacks)
-    draw_hands(right_oct, left_oct, right_hand, left_hand)
+    #draw_hands(right_oct, left_oct, right_hand, left_hand)
     draw_title_bar()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
